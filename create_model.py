@@ -64,19 +64,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # parameters that will be used to simulate FRB
-    parser.add_argument('f_low', type=float, help='Minimum cutoff frequency (MHz) to inject FRB')
-    parser.add_argument('f_high', type=float, help='Maximum cutoff frequency (MHz) to allow inject FRB')
-    parser.add_argument('--f_ref', type=float, default=1350, help='Reference frequency (MHz) (center of data)')
-    parser.add_argument('--bandwidth', type=float, default=1500, help='Frequency range (MHz) of array')
-    parser.add_argument('--num_samples', type=int, default=1000, help='Number of samples to train neural network on.\
-                                                                       Only valid if generating Gaussian noise; overwritten\
-                                                                       if background files are provided')
 
-    parser.add_argument('--sim_data', type=str, default=None, help='Filename to save simulation data')
-    parser.add_argument('--save_spectra', type=str, default=None, help='Filename to save Spectra objects with injected FRBs')
-
-    # option to input RFI array
-    parser.add_argument('--RFI_samples', type=str, default=None, help='Array (.npz) that contains RFI data')
+    # option to input Spectra object array
+    parser.add_argument('--Spectra_objects', type=str, default=None, help='Array (.npz) that contains RFI data')
 
     # parameters for convolutional layers
     parser.add_argument('--num_conv_layers', type=int, default=4, help='Number of convolutional layers to train with. Careful when setting this,\
@@ -89,12 +79,13 @@ if __name__ == "__main__":
     parser.add_argument('--n_dense2', type=int, default=64, help='Number of neurons in second dense layer')
 
     # parameters for signal-to-noise ratio of FRB
-    parser.add_argument('--SNRmin', type=float, default=5.0, help='Minimum SNR for FRB signal')
-    parser.add_argument('--SNR_sigma', type=float, default=1.0, help='Standard deviation of SNR from log-normal distribution')
-    parser.add_argument('--SNRmax', type=float, default=15.0, help='Maximum SNR of FRB signal')
 
-    parser.add_argument('--weight_FRB', type=float, default=10.0, help='Weighting (> 1) on FRBs, used to minimize false negatives')
-
+    # parser.add_argument('--SNRmin', type=float, default=5.0, help='Minimum SNR for FRB signal')
+    # parser.add_argument('--SNR_sigma', type=float, default=1.0, help='Standard deviation of SNR from log-normal distribution')
+    # parser.add_argument('--SNRmax', type=float, default=15.0, help='Maximum SNR of FRB signal')
+    #
+    # parser.add_argument('--weight_FRB', type=float, default=10.0, help='Weighting (> 1) on FRBs, used to minimize false negatives')
+    #
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size for model training')
     parser.add_argument('--epochs', type=int, default=32, help='Number of epochs to train with')
 
@@ -113,45 +104,6 @@ if __name__ == "__main__":
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
     RFI_samples = np.load(args.RFI_samples, allow_pickle=True)
-
-    # set number of frequency channels to simulate
-    if RFI_samples is not None:
-        print('Getting number of channels from inputted RFI array')
-        spectra_samples = RFI_samples['spectra_data']
-        NFREQ = spectra_samples[0].nchans
-    else:
-        NFREQ = 64
-
-    print('Number of frequency channels: {}'.format(NFREQ))
-    NTIME = 256
-
-    # make dictionaries to pass all the arguments into functions succintly
-    frb_params = {'shape': (NFREQ, NTIME), 'f_low': args.f_low, 'f_high': args.f_high,
-                  'f_ref': args.f_ref, 'bandwidth': args.bandwidth}
-    label_params = {'num_samples': args.num_samples, 'SNRmin': args.SNRmin, 'SNR_sigma': args.SNR_sigma,
-                    'SNRmax': args.SNRmax, 'background_files': RFI_samples, 'FRB_parameters': frb_params}
-
-    ftdata, labels = make_labels(**label_params)
-
-    # save spectra with matching labels
-    if args.save_spectra is not None:
-        print('Saving 10000 spectra to disk as  ' + args.save_spectra)
-        # make two copies of spectra to "recreate all labeled Spectra objects
-        spectra1 = copy.deepcopy(RFI_samples['spectra_data'])
-        spectra2 = copy.deepcopy(RFI_samples['spectra_data'])
-        spectra = np.append(spectra1, spectra2)
-
-        # get a bunch of spectra and labels for simulated arrays
-        random_simulation = np.random.randint(0, len(spectra), 10000)
-        random_spectra = spectra[random_simulation]
-        random_labels = labels[random_simulation]
-
-        # replace spectra data with itself or simulated FRB
-        random_data = ftdata[random_simulation]
-        for spec, data in zip(random_spectra, random_data):
-            spec.data = data
-
-        np.savez(args.save_spectra, spectra=random_spectra, labels=random_labels)
 
     # bring each channel to zero median and each array to unit stddev
     print('Scaling arrays. . .')

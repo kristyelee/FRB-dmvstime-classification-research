@@ -24,16 +24,12 @@ import copy
 
 """Adapted from the code published alongside the paper 'Applying Deep Learning
 to Fast Radio Burst Classification' by Liam Connor and Joeri van Leeuwen, as
-well as code wrapping done by Vishal Gajjar. Consulted code written by Dominic 
+well as code wrapping done by Vishal Gajjar. Consulted code written by Dominic
 Dleduc for FRB classification."""
 
 """Trains a convolutional neural network to recognize differences between fast
-radio bursts and RFI. Training is done by simulating a specified number of FRB
-examples and injecting them into noisy Gaussian backgrounds. To include actual
-RFI data, extract_spectra gets real data from filterbank files and turns them
-into numpy arrays that this program can inject FRBs into."""
-
-
-
-
-
+radio bursts and RFI. Training is done by using DM versus time information of
+each data image stored in a numpy array and using existing classification information
+of whether that information for each image corresponds to the presence of an FRB.
+Pass in 1) the set of DM versus time arrays, and 2) classification labels corresponding
+to whether the DM versus time array corresponds to an image with an FRB or not."""
