@@ -28,8 +28,12 @@ well as code wrapping done by Vishal Gajjar. Consulted code written by Dominic
 Dleduc for FRB classification."""
 
 """Trains a convolutional neural network to recognize differences between fast
-radio bursts and RFI. Training is done by using DM versus time information of
-each data image stored in a numpy array and using existing classification information
-of whether that information for each image corresponds to the presence of an FRB.
-Pass in 1) the set of DM versus time arrays, and 2) classification labels corresponding
-to whether the DM versus time array corresponds to an image with an FRB or not."""
+radio bursts and RFI. Training is done by generating a DM versus time plot for
+each image, storing data of the plot into a numpy array, and using existing
+classification information of whether that numpy array for each image corresponds
+to the presence of an FRB. Pass in an .npz file that contains 1) an array of Spectra
+objects, and 2) classification labels corresponding to whether the Spectra object
+contains an FRB or not. With the array of Spectra objects, convert each into a
+DM vs time plot, then match each DM vs time plot to classification labels through
+indexing, and finally train the convolutional neural network through classification
+of the DM vs time plot as indicative of containing an FRB or just RFI."""
