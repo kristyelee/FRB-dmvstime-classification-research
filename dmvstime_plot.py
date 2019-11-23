@@ -39,6 +39,7 @@ def create_dmvstime_array(data):
         Dedisp_ts = Data.sum(axis=0)
         dmvstm_array.append(Dedisp_ts)
     dmvstm_array=np.array(dmvstm_array)  
+    #print(dmvstm_array)
     return dmvstm_array
 
 if __name__=='__main__':
@@ -47,7 +48,8 @@ if __name__=='__main__':
     dmvstime_array = []
 
     #Create dmvstime array for each spectra object
-    for (data in spectras):
+    for data in spectras:
+        #print(1)
         dmvstime_array.append(create_dmvstime_array(data))
         
     classifier(dmvstime_array, classification_labels)
