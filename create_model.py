@@ -36,29 +36,6 @@ into numpy arrays that this program can inject FRBs into."""
 
 tf.logging.set_verbosity(tf.logging.INFO)
 
-def make_labels(num_samples=0, SNRmin=5, SNR_sigma=1.0, SNRmax=15, background_files=None,
-                FRB_parameters={'shape': (64, 256), 'f_low': 800,
-                'f_high': 2000, 'f_ref': 1350, 'bandwidth': 1500}):
-
-    """Simulates the background for num_data number of points and appends to ftdata.
-    Each iteration will contain one RFI and one FRB array, so the label list should
-    be populated with consecutive 0s and 1s, which will then be shuffled later."""
-
-    ftdata = []
-    labels = []
-
-    if background_files is not None:
-        # extract data from background files
-        backgrounds = spec2np(background_files)
-        freq_RFI = background_files['freq']
-
-        # change frequency range of simulated pulse based on incoming RFI files
-        FRB_parameters['f_ref'] = np.median(freq_RFI)
-        FRB_parameters['bandwidth'] = np.ptp(freq_RFI)
-
-        # set number of samples to iterate over all backgrounds
-        num_samples = len(backgrounds)
-
 if __name__ == "__main__":
     # Read command line arguments
     parser = argparse.ArgumentParser()
@@ -66,7 +43,7 @@ if __name__ == "__main__":
     # parameters that will be used to simulate FRB
 
     # option to input Spectra object array
-    parser.add_argument('--Spectra_objects', type=str, default=None, help='Array (.npz) that contains RFI data')
+    parser.add_argument('--spectra_objects', type=str, default=None, help='Array (.npz) that contains RFI data')
 
     # parameters for convolutional layers
     parser.add_argument('--num_conv_layers', type=int, default=4, help='Number of convolutional layers to train with. Careful when setting this,\
@@ -103,7 +80,7 @@ if __name__ == "__main__":
     best_model_name = args.best_model_file  # Path and Pattern to find all the .ar files to read and train on
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
-    RFI_samples = np.load(args.RFI_samples, allow_pickle=True)
+    spectra_objects = np.load(args.spectra_objects, allow_pickle=True)
 
     # bring each channel to zero median and each array to unit stddev
     print('Scaling arrays. . .')
@@ -111,8 +88,8 @@ if __name__ == "__main__":
     print('Done scaling!')
 
     num_data, nfreq, ntime = ftdata.shape
-    print(num_data, nfreq, ntime)
-    print(labels)
+    # print(num_data, nfreq, ntime)
+    # print(labels)
 
     # Get 4D vector for Keras
     ftdata = ftdata[..., None]
