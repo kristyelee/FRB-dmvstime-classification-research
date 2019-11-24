@@ -27,6 +27,9 @@ def create_dmvstime_array(data):
     dmstep = (hidm-lodm)/48.0
     datacopy = copy.deepcopy(data)
 
+    if (dmstep == 0.0):
+        return dmvstm_array
+
     #Create dmvstime array
 
     for ii in np.arange(lodm,hidm,dmstep):
@@ -51,5 +54,3 @@ if __name__=='__main__':
     for data in spectras:
         #print(1)
         dmvstime_array.append(create_dmvstime_array(data))
-
-    classifier(dmvstime_array, classification_labels)
