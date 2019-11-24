@@ -11,8 +11,7 @@ from keras.models import load_model
 
 from dmvstime_plot import *
 
-# simulate FRB, create a model, and helper functions for training
-from simulate_FRB import SimulatedFRB
+# Create a model, and helper functions for training
 from training_utils import *
 from model import construct_conv2d
 
