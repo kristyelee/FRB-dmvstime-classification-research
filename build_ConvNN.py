@@ -93,8 +93,8 @@ if __name__ == "__main__":
 
     list_splitter_index = int(len(dmvstime_array) * 0.5)
 
-    train_indices = indices[:list_splitter_index]
-    test_indices = indices[list_splitter_index:]
+    train_indices = indices[list_splitter_index:]
+    test_indices = indices[:list_splitter_index]
 
 
     train_data = dmvstime_array[train_indices]
