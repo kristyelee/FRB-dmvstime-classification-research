@@ -73,23 +73,25 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Read archive files and extract data arrays
+    # Read archive files and extract data arrays 
     best_model_name = args.best_model_file  # Path and Pattern to find all the .ar files to read and train on
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
     spectra_objects = np.load(args.spectra_objects, allow_pickle=True)
     print(spectra_objects.files)
     spectra_array = spectra_objects['spectra']
-    spectra_array = np.array([spec.data for spec in spectra_array)
-    dmvstime_array = [create_dmvstime_array(spectra) for spectra in spectra_array]
-    classification_labels = spectra_objects['labels']
+    #spectra_array = np.array([spec.data for spec in spectra_array])
+    spectra_array = np.array(spectra_array)
+    print(type(spectra_array[0]))
+    dmvstime_array = np.array([create_dmvstime_array(spectra.data) for spectra in spectra_array])
+    classification_labels = spectra_objects['labels']  
 
     #do I need to scale data?
 
     indices = np.arange(len(dmvstime_array))
     np.random.shuffle(indices)
 
-    list_splitter_index = int(len(dmvstime_array) * 0.5)
+    list_splitter_index = int(len(dmvstime_array) * 0.5))
 
     train_indices = indices[:list_splitter_index]
     test_indices = indices[list_splitter_index:]
