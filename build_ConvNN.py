@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    # Read archive files and extract data arrays 
+    # Read archive files and extract data arrays
     best_model_name = args.best_model_file  # Path and Pattern to find all the .ar files to read and train on
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     spectra_array = np.array(spectra_array)
     print(type(spectra_array[0]))
     dmvstime_array = np.array([create_dmvstime_array(spectra.data) for spectra in spectra_array])
-    classification_labels = spectra_objects['labels']  
+    classification_labels = spectra_objects['labels']
 
     #do I need to scale data?
 
@@ -113,8 +113,7 @@ if __name__ == "__main__":
 
     # Fit convolutional neural network to the training data
     score = construct_conv2d(train_data=train_data, train_labels=train_labels_keras,
-                            eval_data=eval_data, eval_labels=eval_labels_keras,
-                            nfreq=NFREQ, ntime=NTIME, epochs=args.epochs, batch_size=args.batch_size,
+                            eval_data=eval_data, eval_labels=eval_labels_keras, epochs=args.epochs, batch_size=args.batch_size,
                             num_conv_layers=args.num_conv_layers, filter_size=args.filter_size,
                             n_dense1=args.n_dense1, n_dense2=args.n_dense2,
                             weight_FRB=args.weight_FRB, saved_model_name=best_model_name)
