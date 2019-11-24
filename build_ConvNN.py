@@ -80,7 +80,7 @@ if __name__ == "__main__":
     spectra_objects = np.load(args.spectra_objects, allow_pickle=True)
     print(spectra_objects.files)
     spectra_array = spectra_objects['spectra']
-    spectra_array = np.array(spectra_array)
+    spectra_array = np.array([spec.data for spec in spectra_array)
     dmvstime_array = [create_dmvstime_array(spectra) for spectra in spectra_array]
     classification_labels = spectra_objects['labels']
 
