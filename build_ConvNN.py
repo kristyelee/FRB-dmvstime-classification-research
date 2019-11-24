@@ -39,7 +39,7 @@ DM vs time plot, then match each DM vs time plot to classification labels throug
 indexing, and finally train the convolutional neural network through classification
 of the DM vs time plot as indicative of containing an FRB or just RFI."""
 
-tf.logging.set_verbosity(tf.logging.INFO)
+#tf.logging.set_verbosity(tf.logging.INFO)
 
 if __name__ == "__main__":
     # Read command line arguments
@@ -81,7 +81,7 @@ if __name__ == "__main__":
     print(spectra_objects.files)
     spectra_array = spectra_objects['spectra']
     spectra_array = np.array(spectra_array)
-    dmvstime_array = [create_dmvstime_array(spectra.data) for spectra in spectra_array]
+    dmvstime_array = [create_dmvstime_array(spectra) for spectra in spectra_array]
     classification_labels = spectra_objects['labels']
 
     #do I need to scale data?
