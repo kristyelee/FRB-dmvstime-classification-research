@@ -83,7 +83,7 @@ if __name__ == "__main__":
     #spectra_array = np.array([spec.data for spec in spectra_array])
     spectra_array = np.array(spectra_array)
     print(type(spectra_array[0]))
-    dmvstime_array = np.array([create_dmvstime_array(spectra.data) for spectra in spectra_array])
+    dmvstime_array = np.array([create_dmvstime_array(spectra) for spectra in spectra_array])
     classification_labels = spectra_objects['labels']
 
     #do I need to scale data?
