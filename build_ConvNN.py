@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # option to input spectra_objects file (.npz)
-    parser.add_argument('--spectra_objects', type=str, default=None, help='Array (.npz) that contains RFI data')
+    parser.add_argument('--spectra_objects', type=str, default=None, help='Array (.npz) that contains spectra object data')
 
     # parameters for convolutional layers
     parser.add_argument('--num_conv_layers', type=int, default=4, help='Number of convolutional layers to train with. Careful when setting this,\
