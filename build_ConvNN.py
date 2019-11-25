@@ -85,7 +85,7 @@ if __name__ == "__main__":
     print(type(spectra_array[0]))
     dmvstime_array = np.array([create_dmvstime_array(spectra) for spectra in spectra_array])
     classification_labels = spectra_objects['labels']
-
+    print(dmvstime_array)
     #do I need to scale data?
 
     indices = np.arange(len(dmvstime_array))
@@ -102,14 +102,14 @@ if __name__ == "__main__":
     eval_data = dmvstime_array[test_indices]
     eval_labels = classification_labels[test_indices]
 
-    # Convert the classification labels to binary number representation
+    # Convert the classification labels to binary number representation: encode RFI as [1, 0] and FRB as [0, 1]
     train_labels_keras = to_categorical(train_labels)
     eval_labels_keras = to_categorical(eval_labels)
 
+    print(train_data)
     print(train_labels_keras)
-    print(train_labels)
+    print(eval_data)
     print(eval_labels_keras)
-    print(eval_labels)
 
     # used to enable saving the model
     os.environ['HDF5_USE_FILE_LOCKING'] = 'FALSE'
