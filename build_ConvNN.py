@@ -106,6 +106,11 @@ if __name__ == "__main__":
     train_labels_keras = to_categorical(train_labels)
     eval_labels_keras = to_categorical(eval_labels)
 
+    print(train_labels_keras)
+    print(train_labels)
+    print(eval_labels_keras)
+    print(eval_labels)
+
     # used to enable saving the model
     os.environ['HDF5_USE_FILE_LOCKING'] = 'FALSE'
 
