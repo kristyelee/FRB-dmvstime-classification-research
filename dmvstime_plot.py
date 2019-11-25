@@ -27,13 +27,13 @@ def create_dmvstime_array(data):
     dmstep = (hidm-lodm)/48.0
     datacopy = copy.deepcopy(data)
 
-    if (dmstep == 0.0):
+    if (dmstep == 0.0 and hidm == 0 and lodm == 0):
         return dmvstm_array
 
     #Create dmvstime array
 
     for ii in np.arange(lodm,hidm,dmstep):
-   
+
         #Without this, dispersion delay with smaller DM step does not produce delay close to bin width
 
         data.dedisperse(0,padval='rotate')
