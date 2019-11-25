@@ -47,9 +47,11 @@ def create_dmvstime_array(data):
 
 if __name__=='__main__':
     spectras = np.load(sys.argv[1])
-    classification_labels = np.load(sys.argv[2]);
+    #classification_labels = np.load(sys.argv[2]);
     dmvstime_array = []
-
+    data = spectras[1028]
+    dmvstime_array = create_dmvstime_array(data)
+    print(dmvstime_array)
     #Create dmvstime array for each spectra object
     for data in spectras:
         #print(1)
