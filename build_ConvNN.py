@@ -97,9 +97,9 @@ if __name__ == "__main__":
     test_indices = indices[:list_splitter_index]
 
 
-    train_data = dmvstime_array[train_indices]
+    train_data = np.array(dmvstime_array[train_indices])
     train_labels = classification_labels[train_indices]
-    eval_data = dmvstime_array[test_indices]
+    eval_data = np.array(dmvstime_array[test_indices])
     eval_labels = classification_labels[test_indices]
 
     # Convert the classification labels to binary number representation: encode RFI as [1, 0] and FRB as [0, 1]
