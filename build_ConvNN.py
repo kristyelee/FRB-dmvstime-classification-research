@@ -78,35 +78,40 @@ if __name__ == "__main__":
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
     spectra_objects = np.load(args.spectra_objects, allow_pickle=True)
-    print(spectra_objects.files)
-    spectra_array = spectra_objects['spectra']
-    #spectra_array = np.array([spec.data for spec in spectra_array])
-    spectra_array = np.array(spectra_array)
-    print(type(spectra_array[0]))
-    dmvstime_array = [create_dmvstime_array(spectra) for spectra in spectra_array]
+    spectra_array = np.array(spectra_objects['spectra'])
+    index = 0
+    invalid_indices, dmvstime_array = [], []
+    for data in spectra_array:
+        if data.dm < 50:
+            invalid_indices.append(index)
+        else:
+            dmvstime_array.append(create_dmvstime_array(data))
+        index += 1
+
     dmvstime_array = np.array(dmvstime_array)
     classification_labels = spectra_objects['labels']
-    print(dmvstime_array)
-    print(dmvstime_array[0]) #do I need to scale data?
+    classification_labels = [classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices]
+    # Scale data
+    dmvstime_array_scaled = dmvstime_array
 
-    indices = np.arange(len(dmvstime_array))
+    indices = np.arange(len(dmvstime_array_scaled))
     np.random.shuffle(indices)
 
-    list_splitter_index = int(len(dmvstime_array) * 0.5)
+    list_splitter_index = int(len(dmvstime_array_scaled) * 0.5)
 
     train_indices = indices[list_splitter_index:]
     test_indices = indices[:list_splitter_index]
 
 
-    train_data = np.array(dmvstime_array[train_indices])
+    train_data = np.array(dmvstime_array_scaled[train_indices])
     train_labels = classification_labels[train_indices]
-    eval_data = np.array(dmvstime_array[test_indices])
+    eval_data = np.array(dmvstime_array_scaled[test_indices])
     eval_labels = classification_labels[test_indices]
 
     # Convert the classification labels to binary number representation: encode RFI as [1, 0] and FRB as [0, 1]
     train_labels_keras = to_categorical(train_labels)
     eval_labels_keras = to_categorical(eval_labels)
-    
+
     print(train_data.shape)
     print(train_data)
     print(train_labels_keras)
