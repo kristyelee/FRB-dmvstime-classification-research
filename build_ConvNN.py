@@ -78,21 +78,28 @@ if __name__ == "__main__":
     confusion_matrix_name = args.conf_mat
     results_file = args.save_classifications
     spectra_objects = np.load(args.spectra_objects, allow_pickle=True)
+
     spectra_array = np.array(spectra_objects['spectra'])
     index = 0
     invalid_indices, dmvstime_array = [], []
+
+    #Generate array of DM vs. Time arrays that represent each Spectra object
     for data in spectra_array:
-        if data.dm < 50:
+        if data.dm < 50: #Filter out Spectra objects with low DM
             invalid_indices.append(index)
         else:
             dmvstime_array.append(create_dmvstime_array(data))
         index += 1
 
     dmvstime_array = np.array(dmvstime_array)
+
     classification_labels = spectra_objects['labels']
     classification_labels = [classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices]
+
     # Scale data
-    dmvstime_array_scaled = dmvstime_array
+    median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
+    stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
+    dmvstime_array_scaled = (dmvstime_array - median) / stddev
 
     indices = np.arange(len(dmvstime_array_scaled))
     np.random.shuffle(indices)
@@ -112,11 +119,11 @@ if __name__ == "__main__":
     train_labels_keras = to_categorical(train_labels)
     eval_labels_keras = to_categorical(eval_labels)
 
-    print(train_data.shape)
-    print(train_data)
-    print(train_labels_keras)
-    print(eval_data)
-    print(eval_labels_keras)
+    # print(train_data.shape)
+    # print(train_data)
+    # print(train_labels_keras)
+    # print(eval_data)
+    # print(eval_labels_keras)
 
     # used to enable saving the model
     os.environ['HDF5_USE_FILE_LOCKING'] = 'FALSE'
