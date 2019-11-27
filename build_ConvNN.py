@@ -101,6 +101,10 @@ if __name__ == "__main__":
     stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
     dmvstime_array_scaled = (dmvstime_array - median) / stddev
 
+
+    # Get 4D vector for Keras
+    dmvstime_array_scaled = dmvstime_array_scaled[..., None]
+
     indices = np.arange(len(dmvstime_array_scaled))
     np.random.shuffle(indices)
 
