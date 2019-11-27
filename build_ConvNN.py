@@ -94,7 +94,7 @@ if __name__ == "__main__":
     dmvstime_array = np.array(dmvstime_array)
 
     classification_labels = spectra_objects['labels']
-    classification_labels = [classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices]
+    classification_labels = np.array([classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices])
 
     # Scale data
     median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
