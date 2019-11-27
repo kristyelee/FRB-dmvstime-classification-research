@@ -129,6 +129,8 @@ if __name__ == "__main__":
     # print(eval_data)
     # print(eval_labels_keras)
 
+    NTIME = 256
+
     # used to enable saving the model
     os.environ['HDF5_USE_FILE_LOCKING'] = 'FALSE'
 
@@ -161,25 +163,25 @@ if __name__ == "__main__":
         TPind = TP[np.argmin(y_pred_prob[TP])]  # Min probability True positive candidate
         TPdata = eval_data[..., 0][TPind]
     else:
-        TPdata = np.zeros((NFREQ, NTIME))
+        TPdata = np.zeros((48, NTIME))
 
     if FP.size:
         FPind = FP[np.argmax(y_pred_prob[FP])]  # Max probability False positive candidate
         FPdata = eval_data[..., 0][FPind]
     else:
-        FPdata = np.zeros((NFREQ, NTIME))
+        FPdata = np.zeros((48, NTIME))
 
     if FN.size:
         FNind = FN[np.argmax(y_pred_prob[FN])]  # Max probability False negative candidate
         FNdata = eval_data[..., 0][FNind]
     else:
-        FNdata = np.zeros((NFREQ, NTIME))
+        FNdata = np.zeros((48, NTIME))
 
     if TN.size:
         TNind = TN[np.argmin(y_pred_prob[TN])]  # Min probability True negative candidate
         TNdata = eval_data[..., 0][TNind]
     else:
-        TNdata = np.zeros((NFREQ, NTIME))
+        TNdata = np.zeros((48, NTIME))
 
     # plot the confusion matrix and display
     plt.subplot(221)
