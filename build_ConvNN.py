@@ -102,7 +102,7 @@ if __name__ == "__main__":
     dmvstime_array_scaled = (dmvstime_array - median) / stddev
 
 
-    # Get 4D vector for Keras
+    # 4D vector for Keras
     dmvstime_array_scaled = dmvstime_array_scaled[..., None]
 
     indices = np.arange(len(dmvstime_array_scaled))
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     train_indices = indices[list_splitter_index:]
     test_indices = indices[:list_splitter_index]
 
-
+    #Split data into the training set and the evaluation set (the set the model will predict)
     train_data = np.array(dmvstime_array_scaled[train_indices])
     train_labels = classification_labels[train_indices]
     eval_data = np.array(dmvstime_array_scaled[test_indices])
@@ -122,12 +122,6 @@ if __name__ == "__main__":
     # Convert the classification labels to binary number representation: encode RFI as [1, 0] and FRB as [0, 1]
     train_labels_keras = to_categorical(train_labels)
     eval_labels_keras = to_categorical(eval_labels)
-
-    # print(train_data.shape)
-    # print(train_data)
-    # print(train_labels_keras)
-    # print(eval_data)
-    # print(eval_labels_keras)
 
     NTIME = 256
 

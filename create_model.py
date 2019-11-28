@@ -24,6 +24,9 @@ sys.path.append('/home/vgajjar/linux64_bin/lib/python2.7/site-packages/')
 from waterfaller import filterbank, waterfall
 import copy
 
+
+"""SCRATCH CODE"""
+
 """Adapted from the code published alongside the paper 'Applying Deep Learning
 to Fast Radio Burst Classification' by Liam Connor and Joeri van Leeuwen, as
 well as code wrapping done by Vishal Gajjar."""
