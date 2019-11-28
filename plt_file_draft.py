@@ -4,7 +4,8 @@ import imp
 import numpy as np
 from matplotlib import pyplot as plt
 
-#Takes in a filterbank file, dedisperses the Spectra object inside, and displays its image
+"""Takes in a filterbank file, dedisperses the Spectra object inside, and displays its dedispersed image."""
+
 wt = imp.load_source('waterfaller', '/home/vgajjar/SpS/sps/src/waterfaller/waterfaller.py')
 rawdatafile = filterbank.FilterbankFile("/datax/scratch/vgajjar/Test_pipeline/fake.fil")
 
