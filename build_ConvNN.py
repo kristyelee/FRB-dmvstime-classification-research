@@ -97,8 +97,8 @@ if __name__ == "__main__":
     classification_labels = np.array([classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices])
 
     # Scale data
-    median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
-    stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
+    median = np.array([np.median(dmvstime) for dmvstime in dmvstime_array])
+    stddev = np.array([np.std(dmvstime) for dmvstime in dmvstime_array])
     dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(median)
     print(stddev)
