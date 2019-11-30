@@ -105,9 +105,9 @@ if __name__ == "__main__":
     stddev.reshape(len(stddev, 1))
     stddev = stddev[..., None]
     stddev = stddev[..., None]
-    dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(median)
     print(stddev)
+    dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(dmvstime_array_scaled[0:2])
 
 
