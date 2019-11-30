@@ -98,7 +98,13 @@ if __name__ == "__main__":
 
     # Scale data
     median = np.array([np.median(dmvstime) for dmvstime in dmvstime_array])
+    median.reshape(len(median, 1))
+    median = median[..., None]
+    median = median[..., None]
     stddev = np.array([np.std(dmvstime) for dmvstime in dmvstime_array])
+    stddev.reshape(len(stddev, 1))
+    stddev = stddev[..., None]
+    stddev = stddev[..., None]
     dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(median)
     print(stddev)
