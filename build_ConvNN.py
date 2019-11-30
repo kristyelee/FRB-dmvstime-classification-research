@@ -100,6 +100,9 @@ if __name__ == "__main__":
     median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
     stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
     dmvstime_array_scaled = (dmvstime_array - median) / stddev
+    print(median)
+    print(stddev)
+    print(dmvstime_array_scaled[0:2])
 
 
     # 4D vector for Keras
