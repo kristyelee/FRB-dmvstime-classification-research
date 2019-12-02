@@ -97,18 +97,15 @@ if __name__ == "__main__":
     classification_labels = np.array([classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices])
 
     # Scale data
-    median = np.array([np.median(dmvstime) for dmvstime in dmvstime_array])
-    median.reshape(len(median, 1))
-    median = median[..., None]
-    median = median[..., None]
-    stddev = np.array([np.std(dmvstime) for dmvstime in dmvstime_array])
-    stddev.reshape(len(stddev, 1))
-    stddev = stddev[..., None]
-    stddev = stddev[..., None]
+    median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
+    stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
+    dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(median)
     print(stddev)
-    dmvstime_array_scaled = (dmvstime_array - median) / stddev
     print(dmvstime_array_scaled[0:2])
+    print ([np.median(arr) for arr in dmvstime_array_scaled])
+    print ([np.std(arr) for arr in dmvstime_array_scaled])
+
 
 
     # 4D vector for Keras
