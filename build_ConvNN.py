@@ -107,7 +107,7 @@ if __name__ == "__main__":
     indices = np.arange(len(dmvstime_array_scaled))
     np.random.shuffle(indices)
 
-    list_splitter_index = int(len(dmvstime_array_scaled) * 0.5)
+    list_splitter_index = int(len(dmvstime_array_scaled) * 0.8)
 
     train_indices = indices[list_splitter_index:]
     test_indices = indices[:list_splitter_index]
