@@ -128,7 +128,6 @@ if __name__ == "__main__":
     os.environ['HDF5_USE_FILE_LOCKING'] = 'FALSE'
 
     start_time = time()
-
     # Fit convolutional neural network to the training data
     score = construct_conv2d(train_data=train_data, train_labels=train_labels_keras,
                             eval_data=eval_data, eval_labels=eval_labels_keras, epochs=args.epochs, batch_size=args.batch_size,
