@@ -12,7 +12,20 @@ We observe that we can use the DM characteristic of an FRB to detect FRBs in ima
 where DM is the DM of the signal. 
 
 ## Methodology
-We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a>
+We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at time at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a> by adding a dispersion delay. This is done using the code beneath:
+
+```
+dmvstm_array = []
+for ii in np.arange(lodm,hidm,dmstep):
+        #Without this, dispersion delay with smaller DM step does not produce delay close to bin width
+        data.dedisperse(0,padval='rotate')
+        data.dedisperse(ii,padval='rotate')
+        Data = np.array(data.data[..., :nbinlim])
+        Dedisp_ts = Data.sum(axis=0)
+        dmvstm_array.append(Dedisp_ts)
+```
+
+Since the DM of the FRB is what distinguishes the FRB from other pulses in space, we can thus train a convolutional neural network to recognize FRBs from RFI through the numerical data collected from dedispersing each signal and classifying each resulting shift as shown in the new DM vs. time plot as either corresponding to an FRB existing in the image or to an insignificant signal (RFI). 
 
 
 
