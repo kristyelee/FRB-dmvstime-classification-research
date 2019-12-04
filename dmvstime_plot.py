@@ -31,6 +31,7 @@ def create_dmvstime_array(data):
     if (dmstep == 0.0 and hidm == 0 and lodm == 0):
         return dmvstm_array
 
+    dmvstm_array = []
     #Create dmvstime array
     for ii in np.arange(lodm,hidm,dmstep):
         #Without this, dispersion delay with smaller DM step does not produce delay close to bin width
