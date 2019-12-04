@@ -12,7 +12,7 @@ We observe that we can use the DM characteristic of an FRB to detect FRBs in ima
 where DM is the DM of the signal. 
 
 ## Methodology
-We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at t_H
+We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a>
 
 
 
