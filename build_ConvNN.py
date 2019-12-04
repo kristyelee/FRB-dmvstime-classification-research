@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     #Generate array of DM vs. Time arrays that represent each Spectra object
     for data in spectra_array:
-        if data.dm < 100: #Filter out Spectra objects with low DM
+        if data.dm <= 0: #Filter out Spectra objects with low DM
             invalid_indices.append(index)
         else:
             dmvstime_array.append(create_dmvstime_array(data))
