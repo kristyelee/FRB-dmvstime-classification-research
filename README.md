@@ -32,7 +32,7 @@ where data corresponds to the image data. Since the DM of the FRB is what distin
 
 ## Usage
 In the command line, run 
-`python3 build_convNN.py <arg.npz>` 
+```python3 build_convNN.py <arg.npz>` ```
 
 with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a signal) and the classification labels corresponding to the Spectra objects to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion, represent such as a numpy array, and 
 
