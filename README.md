@@ -8,6 +8,7 @@ Fast radio bursts are transient radio signals that result from high energy, yet 
 We observe that we can use the DM characteristic of an FRB to detect FRBs in images containing RFI. We gathered and calculated the frequency vs. time data from signals and artificial, simulated FRBs alike to display a decreasing, concave up curve where high frequency corresponds to a shorter time period and the signal's frequency decreases as time passes. If the DM is high, the frequency vs. time plot of a signal is spread out among a longer period of time. We can classify each plot of frequency vs. time by the following equation: 
 
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+<a href="https://www.codecogs.com/eqnedit.php?latex=(t_H&space;-&space;t_L)&space;\propto&space;DM&space;(\frac{1}{F_L^2}&space;-&space;\frac{1}{F_H^2})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(t_H&space;-&space;t_L)&space;\propto&space;DM&space;(\frac{1}{F_L^2}&space;-&space;\frac{1}{F_H^2})" title="(t_H - t_L) \propto DM (\frac{1}{F_L^2} - \frac{1}{F_H^2})" /></a>
 
 ## Methodology
 
