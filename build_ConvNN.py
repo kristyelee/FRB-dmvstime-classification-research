@@ -190,6 +190,17 @@ if __name__ == "__main__":
     plt.imshow(TNdata, aspect='auto', interpolation='none')
     plt.tight_layout()
 
+    for i in range(10):
+        positive_file_name = './true_positives/positive' + i + '.png'
+
+        plt.savefig(positive_file_name, dpi=300)
+
+    for i in range(10):
+        negative_file_name = './true_negatives/negative' + i + '.png'
+
+        plt.savefig(negative_file_name, dpi=300)
+
+
     # save data, show plot
     print("Saving confusion matrix to {}".format(confusion_matrix_name))
     plt.savefig(confusion_matrix_name, dpi=300)
