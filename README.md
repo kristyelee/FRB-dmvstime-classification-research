@@ -23,11 +23,21 @@ for ii in np.arange(lodm,hidm,dmstep):
         Data = np.array(data.data[..., :nbinlim])
         Dedisp_ts = Data.sum(axis=0)
         dmvstm_array.append(Dedisp_ts)
+        dmvstm_array.append(Dedisp_ts)
+
+return np.array(dmvstm_array)
 ```
 
-Since the DM of the FRB is what distinguishes the FRB from other pulses in space, we can thus train a convolutional neural network to recognize FRBs from RFI through the numerical data collected from dedispersing each signal and classifying each resulting shift as shown in the new DM vs. time plot as either corresponding to an FRB existing in the image or to an insignificant signal (RFI). 
+where data corresponds to the image data. Since the DM of the FRB is what distinguishes the FRB from other pulses in space, we can thus train a convolutional neural network to recognize FRBs from RFI through the numerical data collected from dedispersing each signal and classifying each resulting shift as shown in the new DM vs. time plot as either corresponding to an FRB existing in the image or to an insignificant signal (RFI). We pass in 8000 training samples of DM vs. time plots (and their corresponding labels) and 2000 test samples DM vs. time plots (and their corresponding labels) to the neural network to create and train a model that can be used as a predictor of an FRB's presence in images.
+
+## Usage
+In the command line, run 
+`python3 build_convNN.py <arg.npz>` 
+
+with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a signal) and the classification labels corresponding to the Spectra objects to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion, represent such as a numpy array, and 
 
 
+## Current Results
 
 ## Acknowledgements
 - Vishal Gajjar for mentorship throughout this project
