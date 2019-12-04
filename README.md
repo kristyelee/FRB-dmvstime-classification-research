@@ -32,9 +32,12 @@ where data corresponds to the image data. Since the DM of the FRB is what distin
 
 ## Usage
 In the command line, run 
+
 ```python3 build_convNN.py <arg.npz>` ```
 
-with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a signal) and the classification labels corresponding to the Spectra objects to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion, represent such as a numpy array, and 
+with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a signal) and the classification labels corresponding to the Spectra objects to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion and represent the plot as a numpy array. Randomly choose 80% of the DM vs. time plots to use to train the convolutional neural network model, and let the remaining 20% be part of the test set to see whether the model produces the correct predictions or not.
+
+The two outputted files are best_model.h5 and confusion_matrix.png, where best_model.h5 corresponds to the convolutional neural network built and confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives shown in the shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative.
 
 
 ## Current Results
