@@ -55,13 +55,13 @@ Upon successful training, testing accurate classification of data begins as the 
 
 ```bash
 2000/2000 [==============================] - 25s 13ms/step - loss: 1.7731 - acc: 0.9065 - val_loss: 1.1808 - val_acc: 0.9289
- - val_recall: 1.0 - val_precision: 0.498875 - val_fscore: 0.962802134076
+ - val_recall: 1.0 - val_precision: 0.998875 - val_fscore: 0.962802134076
 Epoch 2/32
 2000/2000 [==============================] - 20s 10ms/step - loss: 1.4860 - acc: 0.9100 - val_loss: 1.0469 - val_acc: 0.9989
- - val_recall: 1.0 - val_precision: 0.498875 - val_fscore: 0.962802134076
+ - val_recall: 1.0 - val_precision: 0.998875 - val_fscore: 0.962802134076
 Epoch 3/32
 2000/2000 [==============================] - 21s 10ms/step - loss: 1.3879 - acc: 0.9070 - val_loss: 0.8714 - val_acc: 0.4989
- - val_recall: 1.0 - val_precision: 0.498875 - val_fscore: 0.962802134076
+ - val_recall: 1.0 - val_precision: 0.998875 - val_fscore: 0.962802134076
 Epoch 4/32
 2000/2000 [==============================] - 20s 10ms/step - loss: 1.3223 - acc: 0.9120 - val_loss: 0.7697 - val_acc: 0.5008
 ```
