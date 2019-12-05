@@ -82,10 +82,10 @@ if __name__ == "__main__":
     spectra_array = np.array(spectra_objects['spectra'])
     index = 0
     invalid_indices, dmvstime_array = [], []
-
+    classification_labels = spectra_objects['labels']
     #Generate array of DM vs. Time arrays that represent each Spectra object
     for data in spectra_array:
-        if data.dm <= 0: #Filter out Spectra objects with low DM
+        if data.dm <= 50: #Filter out Spectra objects with low DM
             invalid_indices.append(index)
         else:
             dmvstime_array.append(create_dmvstime_array(data))

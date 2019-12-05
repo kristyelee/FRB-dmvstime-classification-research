@@ -46,12 +46,14 @@ def create_dmvstime_array(data):
 if __name__=='__main__':
     # Command Line Generation of Spectra Object
     spectras = np.load(sys.argv[1])
-    collect_all_data = sys.argv[2] # 0 for no iteration through entire set, 1 for iteration
-    index = sys.argv[3]
+    collect_all_data = (int)(sys.argv[2]) # 0 for no iteration through entire set, 1 for iteration
+    index = (int)(sys.argv[3])
     data = spectras[index]
+    plt.imshow(data.data, aspect='auto')
+    plt.show()
     dmvstime_array = create_dmvstime_array(data)
     print(dmvstime_array)
-    plt.imshow(dmvstm_array, aspect='auto')
+    plt.imshow(dmvstime_array, aspect='auto')
     plt.show()
 
     #Create dmvstime array for each spectra object

@@ -7,9 +7,8 @@ from matplotlib import pyplot as plt
 """Takes in a filterbank file, dedisperses the Spectra object inside, and displays its dedispersed image."""
 
 wt = imp.load_source('waterfaller', '/home/vgajjar/SpS/sps/src/waterfaller/waterfaller.py')
-rawdatafile = filterbank.FilterbankFile("/datax/scratch/vgajjar/Test_pipeline/fake.fil")
-
-spectra_data, bins, nbins, start_time = wt.waterfall(rawdatafile, 4.4, 0.3, 0, 1024, 128)
+rawdatafile = filterbank.FilterbankFile("/datax/scratch/vgajjar/Test_pipeline/fake.fil")   
+spectra_data, bins, nbins, start_time = wt.waterfall(rawdatafile, 4.4, 0.3, 100, 1024, 128)
 plt.imshow(spectra_data.data, aspect='auto')
 plt.show()
 
