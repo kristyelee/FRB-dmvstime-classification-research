@@ -12,7 +12,7 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of 3602.0 and 8400.8 at the DM of 363.0. 
 
 <p align="center">
-  <img src="plots/dispersedsignal2.png">
+  <img src="plots/dispersedsignal1.png">
 </p>
 
 
@@ -38,7 +38,7 @@ where data corresponds to the image data. Since the DM of the FRB is what distin
 We simulated around 8000 FRBs with a range of DMs and injected them to real-data collected from the Green Bank Telescope at frequencies across 4 GHz to 8 GHz.  We then constructed and passed these 8000 training samples of DM vs. time plots (and their corresponding labels) and 2000 test samples DM vs. time plots (and their corresponding labels) to the neural network to create and train a model that can be used as a predictor of an FRB's presence in DM-vs-time images (such as one shown below).
 
 <p align="center">
-  <img src="plots/dmvstime_dedispersedsignal2.png">
+  <img src="plots/dmvstime_dedispersedsignal.png">
 </p>
 
 
