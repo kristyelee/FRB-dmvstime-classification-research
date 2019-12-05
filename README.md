@@ -2,7 +2,7 @@
 Kristy Lee, Berkeley SETI Research Center, Fall 2019
 
 ## Introduction
-Fast radio bursts are transient radio signals that result from high energy, yet to be comprehended astrophysical processes in space; and thus there exists the possibility they may be linked to signs of extraterrestrial life, which cause them to be of interest for the Breakthrough Listen program. One distinguishing characteristic of FRBs is that they have a large dispersion measure (DM) in comparison to radio frequency interference (RFI), which I utilize to my advantage in this project. The purpose of my project is to train a convolutional neural network (CNN) model to identify and distinguish the rarely occurring FRBs from noise or RFI -- in two-dimensional images of DM-vs-time. 
+Fast radio bursts are transient radio signals that result from high energy, yet to be comprehended astrophysical processes in space; thus there exists the possibility they may be linked to signs of extraterrestrial life, which cause them to be of interest for the Breakthrough Listen program. One distinguishing characteristic of FRBs is that they have a large dispersion measure (DM) in comparison to radio frequency interference (RFI), which I utilize to my advantage in this project. The purpose of my project is to train a convolutional neural network (CNN) model to identify and distinguish the rarely occurring FRBs from noise or RFI -- in two-dimensional images of DM-vs-time. 
 
 ## Observation
 Any transient broadband signal, traveling through the interstellar medium, encounters dispersion due to free electrons between us and the pulsar. This dispersion manifests as a delay between the arrival time of the signal across observed frequency. If observations are to be conducted across frequencies f_H and f_L, then arrival time difference at respective frequencies can be given as, 
@@ -11,7 +11,10 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of xx and yy at the DM of zz. 
 
-Insert: Dispersed pulse example
+<p align="center">
+  <img src="presentation_plots/dispersedsignal.png">
+</p>
+
 
 ## Methodology
 We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at time at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a> by adding a dispersion delay. This is done using the code beneath:
