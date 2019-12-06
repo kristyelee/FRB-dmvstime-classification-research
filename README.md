@@ -43,10 +43,11 @@ We simulated around 8000 FRBs with a range of DMs and injected them to real-data
 
 
 ## Usage
+<Do I include information about the dependencies, which are located in the blpc1 directory>
 In the command line, run 
 
 ```bash
-python2 build_convNN.py --spectra_objects <arg.npz>
+python2 build_convNN.py --spectra_objects [arg.npz]
 ```
 
 with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a simulated FRB or just RFI) and the classification labels corresponding to each Spectra object to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion and represent the plot as a numpy array. Randomly choose 80% of the DM vs. time plots to use to train the convolutional neural network model, and let the remaining 20% be part of the test set to see whether the model produces the correct predictions or not.
@@ -54,10 +55,12 @@ with the first argument being a .npz file containing an array of Spectra objects
 Upon successful training, testing accurate classification of data begins as the following message appears and completes:
 
 ```bash
-Epoch 29/32
-8000/8000 [==============================] - 28s 3ms/step - loss: 0.0610 - acc: 0.9869 - val_loss: 0.3403 - val_acc: 0.9275
- - val_recall: 0.945328031809 - val_precision: 0.913544668588 - val_fscore: 0.944064755069
-fscore (0.9441) did not improve from 0.9735
+8000/8000 [==============================] - 40s 5ms/step - loss: 1.0153 - acc: 0.6270 - val_loss: 0.4707 - val_acc: 0.7040
+ - val_recall: 0.993041749503 - val_precision: 0.630681818182 - val_fscore: 0.971571781252
+Epoch 2/32
+8000/8000 [==============================] - 31s 4ms/step - loss: 0.7601 - acc: 0.7478 - val_loss: 0.4588 - val_acc: 0.7050
+ - val_recall: 0.992047713718 - val_precision: 0.63164556962 - val_fscore: 0.970744481856
+...
 Epoch 30/32
 8000/8000 [==============================] - 70s 9ms/step - loss: 0.1279 - acc: 0.9704 - val_loss: 0.2192 - val_acc: 0.9230
  - val_recall: 0.945328031809 - val_precision: 0.905714285714 - val_fscore: 0.943740458015
@@ -73,7 +76,7 @@ fscore (0.9294) did not improve from 0.9735
 2000/2000 [==============================] - 2s 785us/step
 ```
 
-The two new files saved by the program are best_model.h5 and confusion_matrix.png. best_model.h5 corresponds to the convolutional neural network built. confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives of the test data and shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false-positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false-negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative. This serves to demonstrate example of the most ambiguous data: DM vs. time arrays that are classified as positive or negative with least precision.
+The two new files saved by the program are best_model.h5 and confusion_matrix.png. best_model.h5 contains the convolutional neural network built that can most accurately predict the presence of an FRB inside a Spectra object. confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives of the test data and shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false-positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false-negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative. This serves to demonstrate example of the most ambiguous data: DM vs. time arrays that are classified as positive or negative with least precision.
 
 Here is an example of a confusion matrix and the corresponding data reported:
 
@@ -93,8 +96,10 @@ fscore: 0.818930
   <img src="plots/confusionmatrix.png">
 </p>
 
+Here, 995 of the test items are true positives, 429 of the test items are false positives, 11 of the test items are false negatives, and 565 of the test items are true negatives.
+
 ## Current Results
-We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time plot of an image to obtain the DM vs. time array, the new data upon which the neural network will be trained to recognize as corresponding to an FRB or to RFI. 
+We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time image of each Spectra object to obtain a DM vs. time array for each, and this is the feature of each Spectra object upon which the neural network will be trained to recognize in order to classify each image as corresponding to an FRB or to RFI. We have trained a model that at 80% accuracy predicts whether a fast radio burst is detected in the Spectra object or not, and consider the model to be a work in progress that has high potential of being further developed and polished to classify Spectra objects with FRBs based on FRB's distinguishing DM characteristic (and hence their DM-vs-time image, data upon which the model was trained). We have also minimized the number of false negatives reported, indicating that the neural network is capable of detecting the presence of FRB among RFI.
 
 ## Acknowledgements
 - Vishal Gajjar for mentorship throughout this project
