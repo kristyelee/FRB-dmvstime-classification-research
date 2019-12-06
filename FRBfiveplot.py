@@ -47,6 +47,6 @@ if __name__=='__main__':
     # Command Line Generation of Spectra Object
     spectras = np.load(sys.argv[1], allow_pickle=True)
     spectra_array = np.array(spectras['spectra'])
-    classification_labels = spectra['labels']
+    classification_labels = spectras['labels']
 
     generate_five(spectra_array, classification_labels)
