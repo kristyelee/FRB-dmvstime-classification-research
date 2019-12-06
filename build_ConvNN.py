@@ -109,8 +109,8 @@ if __name__ == "__main__":
 
     list_splitter_index = int(len(dmvstime_array_scaled) * 0.8)
 
-    train_indices = indices[list_splitter_index:]
-    test_indices = indices[:list_splitter_index]
+    train_indices = indices[:list_splitter_index]
+    test_indices = indices[list_splitter_index:]
 
     #Split data into the training set and the evaluation set (the set the model will predict)
     train_data = np.array(dmvstime_array_scaled[train_indices])
