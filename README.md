@@ -1,4 +1,4 @@
-# Fast Radio Burst (FRB) Classification Using the DM vs. Time Plot: Distinguishing FRBs from Radio Frequency Interference)
+# Fast Radio Burst (FRB) Classification Using the DM vs. Time Plot: Distinguishing FRBs from Radio Frequency Interference
 Kristy Lee, Berkeley SETI Research Center, Fall 2019
 
 ## Introduction
