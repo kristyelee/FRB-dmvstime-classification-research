@@ -12,14 +12,14 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of 3602.0 and 8400.8 at the DM of 363.0. 
 
 <p align="center">
-  <img src="plots/dispersedsignal1.png">
+  <img src="plots/dispersedsignal.png">
 </p>
 
 
 ## Methodology
 We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at time at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a> by adding a dispersion delay. This is done using the code beneath:
 
-```bash
+```python
 dmvstm_array = []
 for ii in np.arange(lodm,hidm,dmstep):
         #Without this, dispersion delay with smaller DM step does not produce delay close to bin width
@@ -70,7 +70,20 @@ The two new files saved by the program are best_model.h5 and confusion_matrix.pn
 
 Here is an example of a confusion matrix and the corresponding data reported:
 
+```bash
+Training on 2000 samples took 9.4 minutes
+Confusion matrix:
+    4024    3960
+       0      16
+accuracy: 0.505000
+precision: 0.504008
+recall: 1.000000
+fscore: 0.670220
+```
 
+<p align="center">
+  <img src="plots/confusionmatrix.png">
+</p>
 
 ## Current Results
 We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time plot of an image to obtain the DM vs. time array, the new data upon which the neural network will be trained to recognize as corresponding to an FRB or to RFI. We are currently making final touches to Spectra object data that is passed into the program, and therefore the confusion matrix is still a work in progress and is not yet completely accurate at this time.
