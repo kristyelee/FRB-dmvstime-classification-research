@@ -11,9 +11,6 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of 3602.0 and 8400.8 at the DM of 363.0. 
 
-<p align="center">
-  <img src="plots/dispersedsignal.png">
-</p>
 
 
 ## Methodology
