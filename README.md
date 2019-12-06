@@ -104,6 +104,6 @@ We have successfully developed a convolutional neural network model that can be 
 - Vishal Gajjar for mentorship throughout this project
 - Dominic LeDuc for working on the project with me and generating simulated FRBs that I used to train the convolutional neural network
 - Liam Connor and Joeri van Leeuwen for reference material for research through paper "Applying Deep Learning to Fast Radio Bursts"
-- Liam Connor and Joeri van Leeuwen for reference material for research through paper "Applying Deep Learning to Fast Radio Bursts"
+- Liam Connor and Joeri van Leeuwen for reference material for research through paper "Applying Deep Learning to Fast Radio Burst Classification"
 - Agarwal et. al. for reference material for research through paper "Towards deeper neural networks for Fast Radio Burst detection"
 
