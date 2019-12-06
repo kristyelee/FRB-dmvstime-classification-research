@@ -32,6 +32,8 @@ def generate_five(spectra_array, classification_labels):
         if classification_labels[i] == 1:
             plt.imshow(spectra_array[i].data, aspect='auto')
             plt.show()
+            print(i)
+            print(spectra_array[i].freqs.max(), spectra_array[i].freqs.min(), spectra_array[i].dm)
             dmvstm_array = create_dmvstime_array(spectra_array[i])
             plt.imshow(dmvstm_array, aspect='auto')
             plt.show()
