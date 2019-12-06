@@ -81,14 +81,14 @@ The two new files saved by the program are best_model.h5 and confusion_matrix.pn
 Here is an example of a confusion matrix and the corresponding data reported:
 
 ```bash
-Training on 8000 samples took 18.36 minutes
+Training on 8000 samples took 37.51 minutes
 Confusion matrix:
-     995     429
-      11     565
-accuracy: 0.780000
-precision: 0.698736
-recall: 0.989066
-fscore: 0.818930
+     978     383
+      15     624
+accuracy: 0.801000
+precision: 0.718589
+recall: 0.984894
+fscore: 0.830926
 
 ```
 
