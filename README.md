@@ -15,7 +15,6 @@ Here, DM stands for dispersion measure which is a parameter representing average
   <img src="plots/dispersedsignal.png">
 </p>
 
-
 ## Methodology
 We can dedisperse the signals as follows: shift the signal at each frequency channel left such that we have collapsed the signal to a single column located at time at <a href="https://www.codecogs.com/eqnedit.php?latex=t_H" target="_blank"><img src="https://latex.codecogs.com/gif.latex?t_H" title="t_H" /></a> by adding a dispersion delay. This is done using the code beneath:
 
@@ -103,7 +102,6 @@ We have successfully developed a convolutional neural network model that can be 
 ## Acknowledgements
 - Vishal Gajjar for mentorship throughout this project
 - Dominic LeDuc for working on the project with me and generating simulated FRBs that I used to train the convolutional neural network
-- Liam Connor and Joeri van Leeuwen for reference material for research through paper "Applying Deep Learning to Fast Radio Bursts"
 - Liam Connor and Joeri van Leeuwen for reference material for research through paper "Applying Deep Learning to Fast Radio Burst Classification"
 - Agarwal et. al. for reference material for research through paper "Towards deeper neural networks for Fast Radio Burst detection"
 
