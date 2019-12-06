@@ -5,7 +5,7 @@ Kristy Lee, Berkeley SETI Research Center, Fall 2019
 Fast radio bursts are transient radio signals that result from high energy, yet to be comprehended astrophysical processes in space; thus there exists the possibility they may be linked to signs of extraterrestrial life, which cause them to be of interest for the Breakthrough Listen program. One distinguishing characteristic of FRBs is that they have a large dispersion measure (DM) in comparison to radio frequency interference (RFI), which I utilize to my advantage in this project. The purpose of my project is to train a convolutional neural network (CNN) model to identify and distinguish the rarely occurring FRBs from noise or RFI -- in two-dimensional images of DM-vs-time. 
 
 ## Observation
-Any transient broadband signal, traveling through the interstellar medium, encounters dispersion due to free electrons between us and the pulsar. This dispersion manifests as a delay between the arrival time of the signal across observed frequency. If observations are to be conducted across frequencies <a href="https://www.codecogs.com/eqnedit.php?latex=_{F_H}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?_{F_H}" title="_{F_H}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=_{F_L}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?_{F_L}" title="_{F_L}" /></a>, then arrival time difference at respective frequencies can be given as, 
+Any transient broadband signal, traveling through the interstellar medium, encounters dispersion due to free electrons between us and the source. This dispersion manifests as a delay between the arrival time of the signal across observed frequency. If observations are to be conducted across frequencies <a href="https://www.codecogs.com/eqnedit.php?latex=_{F_H}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?_{F_H}" title="_{F_H}" /></a> and <a href="https://www.codecogs.com/eqnedit.php?latex=_{F_L}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?_{F_L}" title="_{F_L}" /></a>, then arrival time difference at respective frequencies can be given as, 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=(t_H&space;-&space;t_L)&space;\propto&space;DM&space;(\frac{1}{F_L^2}&space;-&space;\frac{1}{F_H^2})" target="_blank"><img src="https://latex.codecogs.com/gif.latex?(t_H&space;-&space;t_L)&space;\propto&space;DM&space;(\frac{1}{F_L^2}&space;-&space;\frac{1}{F_H^2})" title="(t_H - t_L) \propto DM (\frac{1}{F_L^2} - \frac{1}{F_H^2})" /></a>
 
@@ -27,7 +27,6 @@ for ii in np.arange(lodm,hidm,dmstep):
         data.dedisperse(ii,padval='rotate')
         Data = np.array(data.data[..., :nbinlim])
         Dedisp_ts = Data.sum(axis=0)
-        dmvstm_array.append(Dedisp_ts)
         dmvstm_array.append(Dedisp_ts)
 
 return np.array(dmvstm_array)
