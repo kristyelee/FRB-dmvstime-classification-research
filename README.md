@@ -41,7 +41,6 @@ We simulated around 8000 FRBs with a range of DMs and injected them to real-data
 
 
 ## Usage
-<Do I include information about the dependencies, which are located in the blpc1 directory>
 In the command line, run 
 
 ```bash
