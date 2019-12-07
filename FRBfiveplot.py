@@ -23,7 +23,7 @@ sys.path.append('/home/vgajjar/linux64_bin/lib/python2.7/site-packages/')
 from waterfaller import filterbank, waterfall
 import copy
 
-# Utility Function: Plots 5 frequency vs. time and DM vs time plots for 5 Spectra objects containing FRBs
+# Utility Function: Plots 5 dispersed signals and DM vs time plots for 5 Spectra objects containing FRBs
 
 def generate_five(spectra_array, classification_labels):
     count = 0
