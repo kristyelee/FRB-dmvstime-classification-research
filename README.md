@@ -12,7 +12,7 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of 3602.0 and 8400.8 at the DM of 363.0. 
 
 <p align="center">
-  <img src="plots/dispersedsignal1.png">
+  <img src="plots/dispersedsignal.png">
 </p>
 
 ## Methodology
@@ -52,25 +52,25 @@ with the first argument being a .npz file containing an array of Spectra objects
 Upon successful training, testing accurate classification of data begins as the following message appears and completes:
 
 ```bash
-8000/8000 [==============================] - 40s 5ms/step - loss: 1.0153 - acc: 0.6270 - val_loss: 0.4707 - val_acc: 0.7040
- - val_recall: 0.993041749503 - val_precision: 0.630681818182 - val_fscore: 0.971571781252
+8000/8000 [==============================] - 19s 2ms/step - loss: 1.1043 - acc: 0.5990 - val_loss: 0.4789 - val_acc: 0.7530
+ - val_recall: 0.97662601626 - val_precision: 0.671089385475 - val_fscore: 0.959818684696
 Epoch 2/32
-8000/8000 [==============================] - 31s 4ms/step - loss: 0.7601 - acc: 0.7478 - val_loss: 0.4588 - val_acc: 0.7050
- - val_recall: 0.992047713718 - val_precision: 0.63164556962 - val_fscore: 0.970744481856
+8000/8000 [==============================] - 23s 3ms/step - loss: 0.7595 - acc: 0.7635 - val_loss: 0.5306 - val_acc: 0.7145
+ - val_recall: 0.980691056911 - val_precision: 0.636123928807 - val_fscore: 0.960676953708
 ...
 Epoch 30/32
-8000/8000 [==============================] - 70s 9ms/step - loss: 0.1279 - acc: 0.9704 - val_loss: 0.2192 - val_acc: 0.9230
- - val_recall: 0.945328031809 - val_precision: 0.905714285714 - val_fscore: 0.943740458015
-fscore (0.9437) did not improve from 0.9735
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.0870 - acc: 0.9796 - val_loss: 0.3303 - val_acc: 0.9340
+ - val_recall: 0.938008130081 - val_precision: 0.928571428571 - val_fscore: 0.937641634758
+fscore (0.9376) did not improve from 0.9767
 Epoch 31/32
-8000/8000 [==============================] - 28s 4ms/step - loss: 0.1044 - acc: 0.9809 - val_loss: 0.2071 - val_acc: 0.9290
- - val_recall: 0.948310139165 - val_precision: 0.913793103448 - val_fscore: 0.946934412461
-fscore (0.9469) did not improve from 0.9735
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.0744 - acc: 0.9863 - val_loss: 0.3639 - val_acc: 0.9120
+ - val_recall: 0.966463414634 - val_precision: 0.86928702011 - val_fscore: 0.962325834825
+fscore (0.9623) did not improve from 0.9767
 Epoch 32/32
-8000/8000 [==============================] - 28s 3ms/step - loss: 0.1283 - acc: 0.9768 - val_loss: 0.3593 - val_acc: 0.9280
- - val_recall: 0.929423459245 - val_precision: 0.927579365079 - val_fscore: 0.929352396972
-fscore (0.9294) did not improve from 0.9735
-2000/2000 [==============================] - 2s 785us/step
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1388 - acc: 0.9724 - val_loss: 0.3456 - val_acc: 0.8750
+ - val_recall: 0.966463414634 - val_precision: 0.814212328767 - val_fscore: 0.959562247749
+fscore (0.9596) did not improve from 0.9767
+2000/2000 [==============================] - 1s 464us/step
 ```
 
 The two new files saved by the program are best_model.h5 and confusion_matrix.png. best_model.h5 contains the convolutional neural network built that can most accurately predict the presence of an FRB inside a Spectra object. confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives of the test data and shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false-positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false-negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative. This serves to demonstrate example of the most ambiguous data: DM vs. time arrays that are classified as positive or negative with least precision.
@@ -78,14 +78,14 @@ The two new files saved by the program are best_model.h5 and confusion_matrix.pn
 Here is an example of a confusion matrix and the corresponding data reported:
 
 ```bash
-Training on 8000 samples took 37.51 minutes
+Training on 8000 samples took 9.27 minutes
 Confusion matrix:
-     978     383
-      15     624
-accuracy: 0.801000
-precision: 0.718589
-recall: 0.984894
-fscore: 0.830926
+     970     251
+      14     765
+accuracy: 0.867500
+precision: 0.794431
+recall: 0.985772
+fscore: 0.879819
 
 ```
 
@@ -94,6 +94,12 @@ fscore: 0.830926
 </p>
 
 Here, 995 of the test items are true positives, 429 of the test items are false positives, 11 of the test items are false negatives, and 565 of the test items are true negatives.
+
+Below is a confusion matrix with one of the best test results we've seen after training:
+
+<p align="center">
+  <img src="plots/confusionmatrixbest.png">
+</p>
 
 ## Current Results
 We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time image of each Spectra object to obtain a DM vs. time array for each, and this is the feature of each Spectra object upon which the neural network will be trained to recognize in order to classify each image as corresponding to an FRB or to RFI. We have trained a model that at 80% accuracy predicts whether a fast radio burst is detected in the Spectra object or not, and consider the model to be a work in progress that has high potential of being further developed and polished to classify Spectra objects with FRBs based on FRB's distinguishing DM characteristic (and hence their DM-vs-time image, data upon which the model was trained). We have also minimized the number of false negatives reported, indicating that the neural network is capable of detecting the presence of FRB among RFI.
