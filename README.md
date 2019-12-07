@@ -1,4 +1,4 @@
-# Fast Radio Burst (FRB) Classification Using the DM vs. Time Plot: Distinguishing FRBs from Radio Frequency Interference)
+# Fast Radio Burst (FRB) Classification Using the DM vs. Time Plot: Distinguishing FRBs from Radio Frequency Interference
 Kristy Lee, Berkeley SETI Research Center, Fall 2019
 
 ## Introduction
@@ -12,7 +12,7 @@ Any transient broadband signal, traveling through the interstellar medium, encou
 Here, DM stands for dispersion measure which is a parameter representing average electron density towards the line-of-sight to the pulsar. The below figure shows the example of a dispersed pulse across observed frequencies of 3602.0 and 8400.8 at the DM of 363.0. 
 
 <p align="center">
-  <img src="plots/dispersedsignal.png">
+  <img src="plots/dispersedsignal1.png">
 </p>
 
 ## Methodology
@@ -41,7 +41,6 @@ We simulated around 8000 FRBs with a range of DMs and injected them to real-data
 
 
 ## Usage
-<Do I include information about the dependencies, which are located in the blpc1 directory>
 In the command line, run 
 
 ```bash
