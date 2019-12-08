@@ -34,9 +34,9 @@ def generate_five(spectra_array, classification_labels):
             print(spectra_array[i].freqs.max(), spectra_array[i].freqs.min(), spectra_array[i].dm)
             dmvstm_array = create_dmvstime_array(spectra_array[i])
             spectra_array[i].dm = 0
-            plt.imshow(np.fliplr(spectra_array[i].data), aspect='auto', extent=(0, 250, spectra_array[i].freqs.min(), spectra_array[i].freqs.max()))
+            plt.imshow(np.fliplr(spectra_array[i].data), aspect='auto', extent=(0, 256, spectra_array[i].freqs.min(), spectra_array[i].freqs.max()))
             plt.show()
-            plt.imshow(dmvstm_array, aspect='auto')
+            plt.imshow(dmvstm_array, aspect='auto', extent=(0, 256, dmvstm_array.min(), dmvstm_array.max()))
             plt.show()
             count += 1
             if count == 5:
