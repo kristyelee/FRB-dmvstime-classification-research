@@ -1,4 +1,4 @@
-# Fast Radio Burst (FRB) Classification Using DM: Distinguishing FRBs from Radio Frequency Interference
+# Fast Radio Burst (FRB) Classification Using DM Characteristic: Distinguishing FRBs from Radio Frequency Interference
 Kristy Lee, Berkeley SETI Research Center, Fall 2019
 
 ## Introduction
