@@ -89,13 +89,13 @@ fscore: 0.869375
 ```
 
 <p align="center">
-  <img src="plots/confusionmatrix.png">
+  <img src="plots/confusionmatrixbest.png">
 </p>
 
 Here, 995 of the test items are true positives, 277 of the test items are false positives, 22 of the test items are false negatives, and 706 of the test items are true negatives.
 
 ## Current Results
-We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time image of each Spectra object to obtain a DM vs. time array for each, and this is the feature of each Spectra object upon which the neural network will be trained to recognize in order to classify each image as corresponding to an FRB or to RFI. We have trained a model that at 80% accuracy predicts whether a fast radio burst is detected in the Spectra object or not, and consider the model to be a work in progress that has high potential of being further developed and polished to classify Spectra objects with FRBs based on FRB's distinguishing DM characteristic (and hence their DM-vs-time image, data upon which the model was trained). We have also minimized the number of false negatives reported, indicating that the neural network is capable of detecting the presence of FRB among RFI.
+We have successfully developed a convolutional neural network model that can be trained to recognize the difference between an image with an FRB in it and an image with RFI. We have written code to dedisperse each frequency vs. time image of each Spectra object to obtain a DM vs. time array for each, and this is the feature of each Spectra object upon which the neural network will be trained to recognize in order to classify each image as corresponding to an FRB or to RFI. We have trained a model that at 85% accuracy predicts whether a fast radio burst is detected in the Spectra object or not, and consider the model to be a work in progress that has high potential of being further developed and polished to classify Spectra objects with FRBs based on FRB's distinguishing DM characteristic (and hence their DM-vs-time image, data upon which the model was trained). We have also minimized the number of false negatives reported, indicating that the neural network is capable of detecting the presence of FRB among RFI.
 
 ## Acknowledgements
 - Vishal Gajjar for mentorship throughout this project
