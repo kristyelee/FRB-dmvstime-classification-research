@@ -52,25 +52,25 @@ with the first argument being a .npz file containing an array of Spectra objects
 Upon successful training, testing accurate classification of data begins as the following message appears and completes:
 
 ```bash
-8000/8000 [==============================] - 40s 5ms/step - loss: 1.0153 - acc: 0.6270 - val_loss: 0.4707 - val_acc: 0.7040
- - val_recall: 0.993041749503 - val_precision: 0.630681818182 - val_fscore: 0.971571781252
+8000/8000 [==============================] - 17s 2ms/step - loss: 1.0584 - acc: 0.6080 - val_loss: 0.6558 - val_acc: 0.6940
+ - val_recall: 0.98918387414 - val_precision: 0.626011200996 - val_fscore: 0.967593962711
 Epoch 2/32
-8000/8000 [==============================] - 31s 4ms/step - loss: 0.7601 - acc: 0.7478 - val_loss: 0.4588 - val_acc: 0.7050
- - val_recall: 0.992047713718 - val_precision: 0.63164556962 - val_fscore: 0.970744481856
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.7424 - acc: 0.7740 - val_loss: 0.3495 - val_acc: 0.8020
+ - val_recall: 0.967551622419 - val_precision: 0.730512249443 - val_fscore: 0.955625280143
 ...
 Epoch 30/32
-8000/8000 [==============================] - 70s 9ms/step - loss: 0.1279 - acc: 0.9704 - val_loss: 0.2192 - val_acc: 0.9230
- - val_recall: 0.945328031809 - val_precision: 0.905714285714 - val_fscore: 0.943740458015
-fscore (0.9437) did not improve from 0.9735
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1258 - acc: 0.9710 - val_loss: 0.2927 - val_acc: 0.9070
+ - val_recall: 0.941002949853 - val_precision: 0.883656509695 - val_fscore: 0.938660027162
+fscore (0.9387) did not improve from 0.969
 Epoch 31/32
-8000/8000 [==============================] - 28s 4ms/step - loss: 0.1044 - acc: 0.9809 - val_loss: 0.2071 - val_acc: 0.9290
- - val_recall: 0.948310139165 - val_precision: 0.913793103448 - val_fscore: 0.946934412461
-fscore (0.9469) did not improve from 0.9735
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.0823 - acc: 0.9812 - val_loss: 0.3665 - val_acc: 0.9230
+ - val_recall: 0.935103244838 - val_precision: 0.915303176131 - val_fscore: 0.934325876663
+fscore (0.9343) did not improve from 0.969
 Epoch 32/32
-8000/8000 [==============================] - 28s 3ms/step - loss: 0.1283 - acc: 0.9768 - val_loss: 0.3593 - val_acc: 0.9280
- - val_recall: 0.929423459245 - val_precision: 0.927579365079 - val_fscore: 0.929352396972
-fscore (0.9294) did not improve from 0.9735
-2000/2000 [==============================] - 2s 785us/step
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1573 - acc: 0.9685 - val_loss: 0.3521 - val_acc: 0.9220
+ - val_recall: 0.936086529007 - val_precision: 0.912751677852 - val_fscore: 0.935166994106
+fscore (0.9352) did not improve from 0.969
+2000/2000 [==============================] - 1s 457us/step
 ```
 
 The two new files saved by the program are best_model.h5 and confusion_matrix.png. best_model.h5 contains the convolutional neural network built that can most accurately predict the presence of an FRB inside a Spectra object. confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives of the test data and shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false-positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false-negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative. This serves to demonstrate example of the most ambiguous data: DM vs. time arrays that are classified as positive or negative with least precision.
@@ -78,14 +78,14 @@ The two new files saved by the program are best_model.h5 and confusion_matrix.pn
 Here is an example of a confusion matrix and the corresponding data reported:
 
 ```bash
-Training on 8000 samples took 37.51 minutes
+Training on 8000 samples took 8.97 minutes
 Confusion matrix:
-     978     383
-      15     624
-accuracy: 0.801000
-precision: 0.718589
-recall: 0.984894
-fscore: 0.830926
+     995     277
+      22     706
+accuracy: 0.850500
+precision: 0.782233
+recall: 0.978368
+fscore: 0.869375
 ```
 
 <p align="center">
