@@ -38,7 +38,7 @@ def generate_five(spectra_array, classification_labels):
             plt.show()
             plt.imshow(dmvstm_array, aspect='auto')
             plt.show()
-            count+=1
+            count += 1
             if count == 5:
                 break
         else:
