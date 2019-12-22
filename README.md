@@ -52,25 +52,25 @@ with the first argument being a .npz file containing an array of Spectra objects
 Upon successful training, testing accurate classification of data begins as the following message appears and completes:
 
 ```bash
-8000/8000 [==============================] - 17s 2ms/step - loss: 1.0584 - acc: 0.6080 - val_loss: 0.6558 - val_acc: 0.6940
- - val_recall: 0.98918387414 - val_precision: 0.626011200996 - val_fscore: 0.967593962711
+8000/8000 [==============================] - 17s 2ms/step - loss: 1.0575 - acc: 0.6283 - val_loss: 0.6055 - val_acc: 0.7460
+ - val_recall: 0.986152324431 - val_precision: 0.668678739101 - val_fscore: 0.968467458716
 Epoch 2/32
-8000/8000 [==============================] - 16s 2ms/step - loss: 0.7424 - acc: 0.7740 - val_loss: 0.3495 - val_acc: 0.8020
- - val_recall: 0.967551622419 - val_precision: 0.730512249443 - val_fscore: 0.955625280143
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.7672 - acc: 0.7559 - val_loss: 0.3453 - val_acc: 0.8310
+ - val_recall: 0.962413452028 - val_precision: 0.764336213668 - val_fscore: 0.952915473859
 ...
 Epoch 30/32
-8000/8000 [==============================] - 16s 2ms/step - loss: 0.1258 - acc: 0.9710 - val_loss: 0.2927 - val_acc: 0.9070
- - val_recall: 0.941002949853 - val_precision: 0.883656509695 - val_fscore: 0.938660027162
-fscore (0.9387) did not improve from 0.969
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1004 - acc: 0.9769 - val_loss: 0.2759 - val_acc: 0.9295
+ - val_recall: 0.951533135509 - val_precision: 0.912713472486 - val_fscore: 0.949979110487
+fscore (0.95) did not improve from 0.9702
 Epoch 31/32
-8000/8000 [==============================] - 16s 2ms/step - loss: 0.0823 - acc: 0.9812 - val_loss: 0.3665 - val_acc: 0.9230
- - val_recall: 0.935103244838 - val_precision: 0.915303176131 - val_fscore: 0.934325876663
-fscore (0.9343) did not improve from 0.969
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1042 - acc: 0.9761 - val_loss: 0.2744 - val_acc: 0.9325
+ - val_recall: 0.945598417409 - val_precision: 0.92277992278 - val_fscore: 0.944699935388
+fscore (0.9447) did not improve from 0.9702
 Epoch 32/32
-8000/8000 [==============================] - 16s 2ms/step - loss: 0.1573 - acc: 0.9685 - val_loss: 0.3521 - val_acc: 0.9220
- - val_recall: 0.936086529007 - val_precision: 0.912751677852 - val_fscore: 0.935166994106
-fscore (0.9352) did not improve from 0.969
-2000/2000 [==============================] - 1s 457us/step
+8000/8000 [==============================] - 16s 2ms/step - loss: 0.1328 - acc: 0.9758 - val_loss: 0.2840 - val_acc: 0.9305
+ - val_recall: 0.956478733927 - val_precision: 0.91054613936 - val_fscore: 0.954626570984
+fscore (0.9546) did not improve from 0.9702
+2000/2000 [==============================] - 1s 450us/step
 ```
 
 The two new files saved by the program are best_model.h5 and confusion_matrix.png. best_model.h5 contains the convolutional neural network built that can most accurately predict the presence of an FRB inside a Spectra object. confusion_matrix.png reports the numbers of true positives, false positives, false negatives, and true negatives of the test data and shows four plots: the true positive DM vs. time plot that had lowest probability of being classified as containing an FRB, the false-positive DM vs. time plot that had the highest probability of being classified as containing an FRB, the false-negative DM vs. time plot that had the highest probability of being classified as negative, and the true negative DM vs. time plot that had the lowest probability of being classified as negative. This serves to demonstrate example of the most ambiguous data: DM vs. time arrays that are classified as positive or negative with least precision.
@@ -78,18 +78,18 @@ The two new files saved by the program are best_model.h5 and confusion_matrix.pn
 Here is an example of a confusion matrix and the corresponding data reported:
 
 ```bash
-Training on 8000 samples took 8.97 minutes
+Training on 8000 samples took 8.96 minutes
 Confusion matrix:
-     995     277
-      22     706
-accuracy: 0.850500
-precision: 0.782233
-recall: 0.978368
-fscore: 0.869375
+     987     187
+      24     802
+accuracy: 0.894500
+precision: 0.840716
+recall: 0.976261
+fscore: 0.903432
 ```
 
 <p align="center">
-  <img src="plots/confusionmatrixbest.png">
+  <img src="plots/confusionmatrix.png">
 </p>
 
 Here, 995 of the test items are true positives, 277 of the test items are false positives, 22 of the test items are false negatives, and 706 of the test items are true negatives.
