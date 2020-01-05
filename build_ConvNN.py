@@ -96,6 +96,8 @@ if __name__ == "__main__":
     classification_labels = spectra_objects['labels']
     classification_labels = np.array([classification_labels[i] for i in range(len(classification_labels)) if i not in invalid_indices])
 
+    dmvstime_array *= 4
+    classification_labels *= 4
     # Scale data
     median = np.median(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
     stddev = np.std(dmvstime_array.reshape(len(dmvstime_array), -1), axis=-1)[:, np.newaxis, np.newaxis]
