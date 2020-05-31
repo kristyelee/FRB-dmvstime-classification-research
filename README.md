@@ -4,7 +4,6 @@ Kristy Lee, Berkeley SETI Research Center, Fall 2019
 ## Build Requirements
 * [NumPy](https://numpy.org/)
 * [Matplotlib](https://matplotlib.org/3.1.1/users/installing.html)
-* [SciPy](https://www.scipy.org/install.html)
 * [Presto](https://github.com/scottransom/presto)
 * [pypulsar](https://github.com/plazar/pypulsar)
 * [pysigproc](https://github.com/devanshkv/pysigproc)
