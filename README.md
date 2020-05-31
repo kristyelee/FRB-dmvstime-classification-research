@@ -51,7 +51,7 @@ We simulated around 8000 FRBs with a range of DMs and injected them to real-data
 In the command line, run 
 
 ```bash
-python2 build_convNN.py --spectra_objects [arg.npz]
+python2 classification.py --spectra_objects [arg.npz]
 ```
 
 with the first argument being a .npz file containing an array of Spectra objects (containing frequency vs. time image data relating to the presence of a simulated FRB or just RFI) and the classification labels corresponding to each Spectra object to begin the process of training a convolutional neural network to distinguish between FRBs and RFI. Then, for each Spectra object with a DM of greater than 50, generate its DM vs. time plot through dedispersion and represent the plot as a numpy array. Randomly choose 80% of the DM vs. time plots to use to train the convolutional neural network model, and let the remaining 20% be part of the test set to see whether the model produces the correct predictions or not.
