@@ -1,6 +1,13 @@
 # Fast Radio Burst (FRB) Classification Using DM Characteristic: Distinguishing FRBs from Radio Frequency Interference
 Kristy Lee, Berkeley SETI Research Center, Fall 2019
 
+## Build Requirements
+* [NumPy](https://numpy.org/)
+* [Matplotlib](https://matplotlib.org/3.1.1/users/installing.html)
+* [SciPy](https://www.scipy.org/install.html)
+* [Presto](https://github.com/scottransom/presto)
+* [pypulsar](https://github.com/plazar/pypulsar)
+
 ## Introduction
 Fast radio bursts are transient radio signals that result from high energy, yet to be comprehended astrophysical processes in space; thus there exists the possibility they may be linked to signs of extraterrestrial life, which cause them to be of interest for the Breakthrough Listen program. One distinguishing characteristic of FRBs is that they have a large dispersion measure (DM) in comparison to radio frequency interference (RFI), which I utilize to my advantage in this project. The purpose of my project is to train a convolutional neural network (CNN) model to identify and distinguish the rarely occurring FRBs from noise or RFI -- in two-dimensional images of DM-vs-time. 
 
